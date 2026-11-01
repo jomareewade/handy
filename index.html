@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aurora Mobile – eSIM activation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="phone" data-screen="1">
+
+    <!-- Top bar: back button / logo / step count -->
+    <header class="topbar">
+      <button class="icon-btn" id="backBtn" aria-label="Cancel scan and go back" hidden>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <div class="spacer" id="backSpacer"></div>
+
+      <div class="logo" role="img" aria-label="Aurora Mobile">
+        <svg width="26" height="26" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M12 52V32a20 20 0 0 1 40 0v20" stroke="var(--brand)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="32" cy="43" r="5.5" fill="var(--success)"/>
+        </svg>
+        <span>aurora <span class="brand">mobile</span></span>
+      </div>
+
+      <div class="step-count" id="stepCount" aria-label="Step 1 of 3">1/3</div>
+    </header>
+
+    <div class="segments" aria-hidden="true">
+      <div class="seg"></div><div class="seg"></div><div class="seg"></div>
+    </div>
+
+    <!-- STEP 1: Get ready -->
+    <section class="screen screen-ready" id="screen1">
+      <div class="content">
+        <div class="hero-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h6l4 4v13a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><rect x="9.5" y="12" width="5" height="6" rx="1"/></svg>
+        </div>
+        <h1>Get ready to activate your eSIM</h1>
+        <p class="lead">A quick check now helps your Aurora Mobile eSIM set up smoothly. Tick each item as you go.</p>
+
+        <div class="card checklist" id="checklist">
+          <!-- Filled in by script.js -->
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="ready-row">
+          <span class="ready-label" id="readyLabel">0 of 4 ready</span>
+          <button class="link-btn" id="markAllBtn">Mark all as ready</button>
+        </div>
+        <button class="primary-btn" id="scanBtn" disabled>Scan QR code</button>
+      </div>
+    </section>
+
+    <!-- STEP 2: Scanner simulation -->
+    <section class="screen screen-scan" id="screen2" hidden>
+      <div class="camera" data-phase="aim">
+        <div class="scan-heading">
+          <h2>Scan your QR code</h2>
+          <p id="scanHint">Hold your phone steady so the code fits inside the frame.</p>
+        </div>
+
+        <div class="viewfinder">
+          <span class="bracket tl"></span><span class="bracket tr"></span>
+          <span class="bracket bl"></span><span class="bracket br"></span>
+          <div class="qr"><div class="qr-grid" id="qrGrid"></div></div>
+          <div class="scan-line"></div>
+          <div class="badge" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+          </div>
+        </div>
+
+        <div class="status" id="statusText" aria-live="polite">Looking for a QR code…</div>
+        <div class="proto-note">Prototype: the camera and scan are simulated</div>
+
+        <div class="sheet">
+          <div class="sheet-title">Setting up your eSIM</div>
+          <div class="track"><div class="bar" id="progressBar"></div></div>
+          <ul class="steps" id="activationSteps">
+            <li data-i="0"><span class="dot"></span>Reading your code</li>
+            <li data-i="1"><span class="dot"></span>Downloading your eSIM</li>
+            <li data-i="2"><span class="dot"></span>Activating your line</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: Success -->
+    <section class="screen screen-done" id="screen3" hidden>
+      <div class="content center">
+        <div class="success-mark">
+          <div class="halo"></div>
+          <svg width="76" height="76" viewBox="0 0 88 88" fill="none" aria-hidden="true">
+            <circle class="ring" cx="44" cy="44" r="40" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+            <path class="tick" d="M27 45l12 12 22-26" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h1 class="fade d1">Your eSIM is active</h1>
+        <p class="lead fade d2">Your Aurora Mobile line is connected and ready to use.</p>
+
+        <div class="card details fade d3">
+          <div class="row"><span>Status</span><span class="pill"><span class="pill-dot"></span>Active</span></div>
+          <div class="row"><span>Network</span><strong>Connected</strong></div>
+          <div class="row"><span>Activated</span><strong>Just now</strong></div>
+        </div>
+
+        <div class="next fade d4">
+          <div class="eyebrow">What's next</div>
+          <div class="next-item"><span class="num">1</span><span>Choose which line to use for mobile data in your phone's settings.</span></div>
+          <div class="next-item"><span class="num">2</span><span>Keep your original SIM until you've opened a web page on the new line.</span></div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <button class="primary-btn" id="doneBtn">Done</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
